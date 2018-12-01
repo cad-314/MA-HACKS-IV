@@ -1,1 +1,44 @@
 
+def start():
+print ("Hello and welcome to ChessUp!")
+name = input("HI,What's your name:")
+print ("Hi, "+name+"!""Nice to meet you Im Sandra")
+print ("The objective of this game is to move the peaces with wisdom.")
+print ("After Moving youre peaces wisley you most lickly win")
+choice = input("Do you want to play Y/N?")
+if choice == "Y":
+begin()
+if choice == "N":
+print ("Really, After all I helped with, buuuuu, to you.")
+
+
+def begin():
+global white
+global Black
+print ("Let's get started!")
+if gold > 99:
+print ("You've Won this round, congrats!")
+play = input("Do you want to re-mach ?")
+if play =="Y":
+begin()
+if play =="N":
+print ("Well, to bad to say goodbye,Bye !")
+pick = input("Do you want to Move the King ?")
+if pick == "Y":
+time.sleep(1)
+print ("You Moved a peace.")
+apples=apples+1
+print ("You currently have, ",peaces left," peaces")
+begin()
+if pick == "N":
+sell = input("Do you want a hint?")
+if sell == "Y":
+global gold
+global apples
+print ("You currently have, ",peaces left," peaces left")
+print ("You lost.")
+gold=apples*10
+apples=0
+print ("Your have collected",peaces)
+begin()
+start()
