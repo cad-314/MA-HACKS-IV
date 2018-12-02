@@ -150,7 +150,7 @@ def presidential_debate(job, secret, secret_reaction):
 		if gun_control == "N":
 			won = False
 	if (job == "Democratic scientist"):
-		climate_change = input("Do you believe cilmate change is a hoax invented by China Y/N?"):
+		climate_change = input("Do you believe climate change is a hoax invented by China Y/N?")
 		if climate_change == "Y":
 			won = False
 	if (job == "Republican buisnesses"):
