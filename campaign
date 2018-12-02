@@ -126,6 +126,7 @@ def primary_election():
 
 
 def presidential_debate(party, secret, secret_reaction):
+	if campaign_manager=="David" or "Joshua Burke"
 	won = True
 	issue = random.choice([0,1,2])
 	if issue == 0:
