@@ -1,1 +1,7 @@
-Hello people
+iPresident: a text-based campaign simulator that shows the intricacies of a political campaign
+
+Motivation: We created this project to represent the complicated process of a presidential campiagn in a simple way that is easily
+understood by all. 
+
+To use this program, make sure you have Python 2.7 on your computer. Then you can just run the program in Terminal (or Command Prompt if
+you use Windows). When entering your responses, remember to put quotes around them. Otherwise, the program can't read them. 
