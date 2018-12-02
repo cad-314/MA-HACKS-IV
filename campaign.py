@@ -1,3 +1,8 @@
+import time
+global gold
+global apples
+apples = 0
+gold = 0
 
 def start():
     print ("Hello and welcome!") #print out hello
