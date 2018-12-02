@@ -1,58 +1,203 @@
+import random
+
+
+global name
+
+
 
 def start():
+	global name
 	print ("Hello and welcome to iPresident!")
-	name = input("Hi,What's your name?:")
-	print ("Hi, "+name+"!""Nice to meet you")
 	print ("The objective of this game is to become the president of the US.")
 	print ("Your choices affect the outcome, choose carefully!")
+	print("When you enter an answer, put quotes around it. Otherwise, the program can't read it.")
+	name = input("Hi What's your name?:")
+	print ("Hi, " + name + "! ""Nice to meet you")
 	choice = input("Do you want to play Y/N?")
 	if choice == "Y":
 		begin()
-	if choice == "N":
+	elif choice == "N":
 		print ("Really, :(?")
+		quit()
+	else:
+		print("I did not understand that.")
+		quit()
+
+def party():
+	party_selection = input("Type D if you're a democrat or type R for republican")
+	if (party_selection == "D") or (party_selection == "R"):
+		return(party_selection)
+	else:
+		print("I do not understand. Please try again.")
+		party()
+
+def job(party):
+	abr_job = input(" Who do you want to be: for Senator (easy) type S, \nfor Businessman (medium) type B, \nor for scientist(hard) type T")
+	if party == "D":
+		if abr_job == "S":
+			selected_job = "Democratic senator"
+			print("Okay! You're now a Democratic senator already well known in politics who supports \nfree healthcare, gun control, and immigration.")
+		elif abr_job == "B": 
+			selected_job = "Democratic businessman"
+			print("Okay! you're now a Democratic businessman who is only known by few and understands the \n basics of politics. The average Democratic businessman stands for free healthcare, immigration, and gun control.")
+		elif abr_job == "T": 
+			selected_job = "Democratic scientist"
+			print("Okay! you're now a Democratic scientist who has no standing in the business/political \nworld and does not even grasp the basics of starting a campaign. He supports free healthcare, gun control, and immigration.")
+		else:
+			print("I did not understand that.")
+			job(party)
+	elif party == "R":
+		if abr_job == "S":
+			selected_job = "Republican senator" 
+			print("Okay! you're now a Republican senator who is already well known in politics who stands for \n keeping the border secure, anti gun control, and free market healthcare")
+		elif abr_job == "B": 
+			selected_job = "Republican businessman"
+			print("Okay! you're now a Republican businessman who is only known by few and understands the basics \nof politics. He stands for keeping the border secure, anti gun control, and free market healthcare")
+		elif abr_job == "T": 
+			selected_job = "Republican scientist"
+			print("Okay! you're now a Republican scientist who has no standing in the business/political \nworld and does not grasp even the basics of starting a campaign. He stands for keeping the border secure, anti gun control, and free market healthcare")
+		else:
+			print("I did not understand that.")
+			job(party)
+	return(selected_job)
+
+
+def secret():
+	abr_secret = input("Every politician has a secret. If you had an affair, type A. \nIf you evaded taxes, type T. \nIf you embezzled from an old employer, type E.")
+	if abr_secret == "A":
+		return("had an affair")
+	elif abr_secret == "T":
+		return("evaded taxes")
+	elif abr_secret == "E":
+		return("embezzled an old employer")
+	else:
+		print("I did not understand that.")
+		secret()
+
+def description(job, gender, secret):
+	written_description = "You are a " + gender + " " + job + " who " + secret + "."
+	return(written_description)
+
+
+def campaign_setup(party):
+	print("Time to set up your campaign!")
+	if party == "D":
+		abr_campaign_manager = input("Time to choose your campaign manager. \nIf you want Joshua Burke, an avid Bernie Sander suporter with a passion for healthcare, type J. \nIf you want Amy Cruz, a well-educated child who supports the traditional party extablishment, type A.")
+	elif party == "R":
+		abr_campaign_manager = input("Time to choose your campaign manager. \nIf you want Samantha Peabody, a lawyer who supports the Republican establishment and big buisnesses, type S. \nIf you want David Eaton, a Second Amendment activist from Texas who is fed up with the political machine, type D.")
+	if abr_campaign_manager == "J":
+		campaign_manager = "Joshua Burke"
+		print("Your campaign manager is " + campaign_manager + ".")
+	elif abr_campaign_manager == "S":
+		campaign_manager = "Samantha Peabody"
+		print("Your campaign manager is " + campaign_manager + ".")
+	elif abr_campaign_manager == "A":
+		campaign_manager = "Amy Cruz"
+		print("Your campaign manager is " + campaign_manager + ".")
+	elif abr_campaign_manager == "D":
+		campaign_manager = "David"
+		print("Your campaign manager is " + campaign_manager + ".")
+	else:
+		print("Sorry, I do not understand.")
+		campaign_setup()
+	return(campaign_manager)
+
+
+def secret_reveal(secret):
+	print("Oh no! A reporter found out and published an article saying that you " + secret + ".")
+	secret_reaction = input("Do you want to come clean by pressing T \nor lie about it by pressing L? ")
+	return(secret_reaction)
+
+def primary_election():
+	print("What do you want to say for your campaign?")
+	Slogan=input("To say VOTE FOR ME BECAUSE I'M AWESOME! press D, \n to say  vote for me because i fulfill my promises, I am honest, and I care for the wellbeing of every individual in America, press S")
+	if slogan== "D" 
+		print("Sorry, wrong answer :( ")
+		again = input("Do you want to play again? Y/N?")
+		if again== "Y":
+			party()
+		if again== "N":
+			quit()
+	if slogan== "S":
+		print("Congrats you won that election! Now onto the Presidential debate.")
+
+
+def presidential_debate(party, secret, secret_reaction):
+	won? = True
+	issue = random.choice([0,1,2])
+	if issue == 0:
+		healthcare = input("Is your party pro free health care Y/N?")
+		if party == "D":
+			if healthcare == "N":
+				won? = False
+			elif healthcare != "Y":
+				print("I do not understand. Please try again.")
+				presidential_debate(party)
+		elif party == "R":
+			if healthcare == "Y":
+				won? = False
+			elif healthcare != "N":
+				print("I do not understand. Please try again.")
+				presidential_debate(party)
+	if issue == 1:
+		immigration = input("Does your party support a very secure border Y/N?")
+		if party == "R":
+			if immigration == "N":
+				won? = False
+			elif immigration != "Y":
+				print("I do not understand. Please try again.")
+				presidential_debate(party)
+		elif party == "D":
+			if immigration == "Y":
+				won? = False
+			elif immigration != "N":
+				print("I do not understand. Please try again.")
+				presidential_debate(party)
+	if issue == 2:
+		gun_control = input("Does your party support strict gun control Y/N?")
+		if party == "D":
+			if gun_control == "N":
+				won? = False
+			elif gun_control != "Y":
+				print("I do not understand. Please try again.")
+				presidential_debate(party)
+		elif party == "R":
+			if gun_control == "Y":
+				won? = False
+			elif gun_control != "N":
+				print("I do not understand. Please try again.")
+				presidential_debate(party)
+	if secret_reaction == "L":
+		print("Your oppenent asks you if you ever " + secret + ".")
+		new_reaction = input("If you still deny it, type L. If you reveal the truth, type T.")
+	else:
+		new_reaction = "T"
+	return([won?, new_reaction])
+
+
+def general_election(won?, new_reaction):
+	print("Congrats! You made it to Election Night! Let's see if you did what it takes to win.")
+
 
 
 def begin():
-	global white
-	global Black
+	global name
 	print ("Let's get started")
-	party = input("Type D if you're a democrat or type R for republican")
-	if party == "D":
-		job=input(" Who do you want to be:Senator(easy) type s, Businessman (medium)type b, or scientist(hard) type d")
-		Job=input
-		if job == "s":
-			print("Okay! you're now a Democrat Senator")
-		if job == "b": 
-			print("Okay! you're now a Democrat Businessman")
-		if job == "d": 
-			print("Okay! you're now a Democrat Scientist")
-	if party =="R":
-		job = input(" Who do you want to be:Senator(easy) type s, Businessman (medium)type b, or scientist(hard) type d")
-		if job == "s": 
-			print("Okay! you're now a Republican Senator")
-		if job == "b": 
-			print("Okay! you're now a Republican Businessman")
-		if job == "d": 
-			print("Okay! you're now a Republican Scientist")
-	if play =="Y":
-		begin()
-	if play =="N":
-		print ("Well, to bad to say goodbye,Bye !")
-	pick = input("Do you want to Move the King ?")
-	if pick == "Y":
-		time.sleep(1)
-		print ("You Moved a peace.")
-	apples=apples+1
-	print ("You currently have, ",peaces left," peaces")
-if pick == "N":
-	sell = input("Do you want a hint?")
-if sell == "Y":
-	global gold
-	global apples
-	print ("You currently have, ",peaces left," peaces left")
-	print ("You lost.")
-	gold=apples*10
-	apples=0
-	print ("Your have collected",peaces)
+	chosen_party = party()
+	print("Your party is " + chosen_party)
+	chosen_job = job(chosen_party)
+	gender = input("What is your gender?")
+	hidden_secret = secret()
+	more_info = description(chosen_job, gender, hidden_secret)
+	print(more_info)
+	campaign_setup(chosen_party)
+	secret_reaction = secret_reveal(hidden_secret)
+	primary_election()
+	debate = presidential_debate(chosen_party, hidden_secret, secret_reaction)
+	won? = debate[0]
+	new_reaction = debate[1]
+	quit()
+	
+
+start()   
 begin()
-start()
