@@ -43,26 +43,26 @@ def job(party):
 	if party == "D":
 		if abr_job == "S":
 			selected_job = "Democratic senator"
-			print("Okay! You're now a Democratic senator already well known in politics who supports \nstrong gun control.")
+			print("Okay! You're now a Democratic senator already well known in politics who supports strong gun control.")
 		elif abr_job == "B": 
 			selected_job = "Democratic businessman"
-			print("Okay! You're now a Democratic businessman who is well known but only understands the \n basics of politics. You stand for free healthcare.")
+			print("Okay! You're now a Democratic businessman who is well known but only understands the basics of politics. You stand for free healthcare.")
 		elif abr_job == "T": 
 			selected_job = "Democratic scientist"
-			print("Okay! You're now a Democratic scientist who has no standing in the business/political \nworld and does not even grasp the basics of starting a campaign. You strongly support preventing climate \nchange through proper environmetal pratices.")
+			print("Okay! You're now a Democratic scientist who has no standing in the business/political world and does not even grasp the basics of starting a campaign. You strongly support preventing climate \nchange through proper environmetal pratices.")
 		else:
 			print("I did not understand that.")
 			job(party)
 	elif party == "R":
 		if abr_job == "S":
 			selected_job = "Republican senator" 
-			print("Okay! You're now a Republican senator who is already well known in politics who stands for \n keeping the border secure.")
+			print("Okay! You're now a Republican senator who is already well known in politics who stands for keeping the border secure.")
 		elif abr_job == "B": 
 			selected_job = "Republican businessman"
-			print("Okay! You're now a Republican businessman who is well known but only understands the basics \nof politics. You stand for low cooperate taxes.")
+			print("Okay! You're now a Republican businessman who is well known but only understands the basics of politics. You stand for low cooperate taxes.")
 		elif abr_job == "T": 
 			selected_job = "Republican scientist"
-			print("Okay! You're now a Republican scientist who has no standing in the business/political world \nand does not grasp even the basics of starting a campaign. You stand for free market healthcare.")
+			print("Okay! You're now a Republican scientist who has no standing in the business/political world and does not grasp even the basics of starting a campaign. You stand for free market healthcare.")
 		else:
 			print("I did not understand that.")
 			job(party)
@@ -150,7 +150,7 @@ def presidential_debate(job, secret, secret_reaction):
 		if gun_control == "N":
 			won = False
 	if (job == "Democratic scientist"):
-		climate_change = input("Do you believe cilmate change is a hoax invented by China Y/N?"):
+		climate_change = input("Do you believe cilmate change is a hoax invented by China Y/N?")
 		if climate_change == "Y":
 			won = False
 	if (job == "Republican buisnesses"):
@@ -191,7 +191,7 @@ def begin():
 	campaign_manager = campaign_setup(chosen_party)
 	secret_reaction = secret_reveal(hidden_secret)
 	primary_election(chosen_job, campaign_manager)
-	debate = presidential_debate(chosen_party, hidden_secret, secret_reaction)
+	debate = presidential_debate(chosen_job, hidden_secret, secret_reaction)
 	won = debate[0]
 	new_reaction = debate[1]
 	general_election(won, new_reaction)
