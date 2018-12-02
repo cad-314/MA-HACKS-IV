@@ -31,6 +31,13 @@ def party():
 		print("I do not understand. Please try again.")
 		party()
 
+def game_over():
+	again = input("Do you want to play again? Y/N?")
+	if again== "Y":
+		party()
+	if again== "N":
+		quit()
+
 def job(party):
 	abr_job = input(" Who do you want to be: for Senator (easy) type S, \nfor Businessman (medium) type B, \nor for scientist(hard) type T")
 	if party == "D":
@@ -110,32 +117,28 @@ def secret_reveal(secret):
 
 def primary_election():
 	print("What do you want to say for your campaign?")
-	Slogan=input("To say VOTE FOR ME BECAUSE I'M AWESOME! press D, \n to say  vote for me because i fulfill my promises, I am honest, and I care for the wellbeing of every individual in America, press S")
-	if slogan== "D" 
+	slogan = input("To say VOTE FOR ME BECAUSE I'M AWESOME! press D, \n to say  vote for me because i fulfill my promises, I am honest, and I care for the wellbeing of every individual in America, press S")
+	if slogan == "D":
 		print("Sorry, wrong answer :( ")
-		again = input("Do you want to play again? Y/N?")
-		if again== "Y":
-			party()
-		if again== "N":
-			quit()
-	if slogan== "S":
+		game_over()
+	if slogan == "S":
 		print("Congrats you won that election! Now onto the Presidential debate.")
 
 
 def presidential_debate(party, secret, secret_reaction):
-	won? = True
+	won = True
 	issue = random.choice([0,1,2])
 	if issue == 0:
 		healthcare = input("Is your party pro free health care Y/N?")
 		if party == "D":
 			if healthcare == "N":
-				won? = False
+				won = False
 			elif healthcare != "Y":
 				print("I do not understand. Please try again.")
 				presidential_debate(party)
 		elif party == "R":
 			if healthcare == "Y":
-				won? = False
+				won = False
 			elif healthcare != "N":
 				print("I do not understand. Please try again.")
 				presidential_debate(party)
@@ -143,13 +146,13 @@ def presidential_debate(party, secret, secret_reaction):
 		immigration = input("Does your party support a very secure border Y/N?")
 		if party == "R":
 			if immigration == "N":
-				won? = False
+				won = False
 			elif immigration != "Y":
 				print("I do not understand. Please try again.")
 				presidential_debate(party)
 		elif party == "D":
 			if immigration == "Y":
-				won? = False
+				won = False
 			elif immigration != "N":
 				print("I do not understand. Please try again.")
 				presidential_debate(party)
@@ -157,13 +160,13 @@ def presidential_debate(party, secret, secret_reaction):
 		gun_control = input("Does your party support strict gun control Y/N?")
 		if party == "D":
 			if gun_control == "N":
-				won? = False
+				won = False
 			elif gun_control != "Y":
 				print("I do not understand. Please try again.")
 				presidential_debate(party)
 		elif party == "R":
 			if gun_control == "Y":
-				won? = False
+				won = False
 			elif gun_control != "N":
 				print("I do not understand. Please try again.")
 				presidential_debate(party)
@@ -172,13 +175,17 @@ def presidential_debate(party, secret, secret_reaction):
 		new_reaction = input("If you still deny it, type L. If you reveal the truth, type T.")
 	else:
 		new_reaction = "T"
-	return([won?, new_reaction])
+	return([won, new_reaction])
 
 
-def general_election(won?, new_reaction):
+def general_election(won, new_reaction):
 	print("Congrats! You made it to Election Night! Let's see if you did what it takes to win.")
-
-
+	if (won == False) or (new_reaction == "T"):
+		print("Sorry you lost!")
+		game_over()
+	else:
+		print("You won the general election congrats you're now the president of the US!")
+		game_over()
 
 def begin():
 	global name
@@ -194,8 +201,9 @@ def begin():
 	secret_reaction = secret_reveal(hidden_secret)
 	primary_election()
 	debate = presidential_debate(chosen_party, hidden_secret, secret_reaction)
-	won? = debate[0]
+	won = debate[0]
 	new_reaction = debate[1]
+	general_election(won, new_reaction)
 	quit()
 	
 
