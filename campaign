@@ -1,44 +1,60 @@
 
 def start():
-print ("Hello and welcome to ChessUp!")
-name = input("HI,What's your name:")
-print ("Hi, "+name+"!""Nice to meet you Im Sandra")
-print ("The objective of this game is to move the peaces with wisdom.")
-print ("After Moving youre peaces wisley you most lickly win")
-choice = input("Do you want to play Y/N?")
-if choice == "Y":
-begin()
-if choice == "N":
-print ("Really, After all I helped with, buuuuu, to you.")
+	print ("Hello and welcome to iPresident!")
+	name = input("Hi,What's your name?:")
+	print ("Hi, "+name+"!""Nice to meet you")
+	print ("The objective of this game is to become the president of the US.")
+	print ("Your choices affect the outcome, choose carefully!")
+	choice = input("Do you want to play Y/N?")
+	if choice == "Y":
+		begin()
+	if choice == "N":
+		print ("Really, :(?")
 
 
 def begin():
-global white
-global Black
-print ("Let's get started!")
-if gold > 99:
-print ("You've Won this round, congrats!")
-play = input("Do you want to re-mach ?")
-if play =="Y":
-begin()
-if play =="N":
-print ("Well, to bad to say goodbye,Bye !")
-pick = input("Do you want to Move the King ?")
-if pick == "Y":
-time.sleep(1)
-print ("You Moved a peace.")
-apples=apples+1
-print ("You currently have, ",peaces left," peaces")
-begin()
+	global white
+	global Black
+	print ("Let's get started")
+	party = input("Type D if you're a democrat or type R for republican")
+	if party == "D":
+		job=input(" Who do you want to be:Senator(easy) type s, Businessman (medium)type b, or scientist(hard) type d")
+		Job=input
+		if job == "s":
+			print("Okay! you're now a Democrat Senator")
+		if job == "b": 
+			print("Okay! you're now a Democrat Businessman")
+		if job == "d": 
+			print("Okay! you're now a Democrat Scientist")
+	if party =="R":
+		job = input(" Who do you want to be:Senator(easy) type s, Businessman (medium)type b, or scientist(hard) type d")
+		if job == "s": 
+			print("Okay! you're now a Republican Senator")
+		if job == "b": 
+			print("Okay! you're now a Republican Businessman")
+		if job == "d": 
+			print("Okay! you're now a Republican Scientist")
+	if play =="Y":
+		begin()
+	if play =="N":
+		print ("Well, to bad to say goodbye,Bye !")
+	pick = input("Do you want to Move the King ?")
+	if pick == "Y":
+		time.sleep(1)
+		print ("You Moved a peace.")
+	apples=apples+1
+	print ("You currently have, ",peaces left," peaces")
 if pick == "N":
-sell = input("Do you want a hint?")
+	sell = input("Do you want a hint?")
 if sell == "Y":
-global gold
-global apples
-print ("You currently have, ",peaces left," peaces left")
-print ("You lost.")
-gold=apples*10
-apples=0
-print ("Your have collected",peaces)
+	global gold
+	global apples
+	print ("You currently have, ",peaces left," peaces left")
+	print ("You lost.")
+	gold=apples*10
+	apples=0
+	print ("Your have collected",peaces)
 begin()
 start()
+
+
