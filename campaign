@@ -1,3 +1,8 @@
+import time
+global gold
+global apples
+apples = 0
+gold = 0
 
 def start():
 	print ("Hello and welcome to iPresident!")
@@ -56,5 +61,3 @@ if sell == "Y":
 	print ("Your have collected",peaces)
 begin()
 start()
-
-
