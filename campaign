@@ -115,14 +115,26 @@ def secret_reveal(secret):
 	secret_reaction = input("Do you want to come clean by pressing T \nor lie about it by pressing L? ")
 	return(secret_reaction)
 
-def primary_election():
+def primary_election(chosen_job, manager):
+	#factoring job to chances of winning, but an expierienced campaign manager (Samantha or Amy) will get rid of disadvantages of inexpiernce
+	if not((manager == "Amy Cruz") or (manager == "Samantha Peabody")):
+		if (chosen_job == "Democratic businessman") or (chosen_job == "Republican businessman"):
+			chance_list = [0, 1]
+		elif (chosen_job == "Democratic scientist") or (chosen_job == "Republican scientist"):
+			chance_list = [0, 1, 2]
+	if random.choice(chance_list) != 0:
+		print("You lost the primary. Your inexpiernce got the better of you. Good luck next time!")
+		game_over()
 	print("What do you want to say for your campaign?")
-	slogan = input("To say VOTE FOR ME BECAUSE I'M AWESOME! press D, \n to say  vote for me because i fulfill my promises, I am honest, and I care for the wellbeing of every individual in America, press S")
+	slogan = input("To say VOTE FOR ME BECAUSE I'M AWESOME! press D, \n to say  vote for me because I fulfill my promises, I am honest, and I care for the wellbeing of every individual in America, press S")
 	if slogan == "D":
 		print("Sorry, wrong answer :( ")
 		game_over()
-	if slogan == "S":
+	elif slogan == "S":
 		print("Congrats you won that election! Now onto the Presidential debate.")
+	else:
+		print("I do not understand. Please try again.")
+		primary_election(chosen_job, manager)
 
 
 def presidential_debate(party, secret, secret_reaction):
@@ -197,9 +209,9 @@ def begin():
 	hidden_secret = secret()
 	more_info = description(chosen_job, gender, hidden_secret)
 	print(more_info)
-	campaign_setup(chosen_party)
+	campaign_manager = campaign_setup(chosen_party)
 	secret_reaction = secret_reveal(hidden_secret)
-	primary_election()
+	primary_election(chosen_job, campaign_manager)
 	debate = presidential_debate(chosen_party, hidden_secret, secret_reaction)
 	won = debate[0]
 	new_reaction = debate[1]
